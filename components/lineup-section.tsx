@@ -4,8 +4,8 @@ import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/simple-card"
+import { Button } from "@/components/simple-button"
 import { festivalData } from "@/data/festival-data"
 import { ExternalLink } from "lucide-react"
 import { useReducedMotion } from "@/components/use-reduced-motion"
@@ -73,8 +73,8 @@ export function LineupSection() {
                   <p className="text-gray-700">{band.description}</p>
                 </CardContent>
                 <CardFooter>
-                  <Button variant="outline" className="w-full" asChild>
-                    <Link href={band.website} target="_blank">
+                  <Button variant="outline" className="w-full">
+                    <Link href={band.website} target="_blank" className="flex items-center w-full justify-center">
                       Visit Website
                       <ExternalLink className="ml-2 h-4 w-4" />
                     </Link>

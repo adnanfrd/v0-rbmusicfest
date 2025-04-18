@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/simple-button"
 import { Facebook, Instagram, Twitter } from "lucide-react"
 
 export function Footer() {
@@ -13,17 +13,17 @@ export function Footer() {
           </div>
 
           <div className="flex gap-4 mb-8">
-            <Button variant="ghost" size="icon" asChild>
+            <Button variant="ghost" size="sm" className="rounded-full p-2">
               <Link href="https://facebook.com" target="_blank" aria-label="Facebook">
                 <Facebook className="h-5 w-5" />
               </Link>
             </Button>
-            <Button variant="ghost" size="icon" asChild>
+            <Button variant="ghost" size="sm" className="rounded-full p-2">
               <Link href="https://instagram.com" target="_blank" aria-label="Instagram">
                 <Instagram className="h-5 w-5" />
               </Link>
             </Button>
-            <Button variant="ghost" size="icon" asChild>
+            <Button variant="ghost" size="sm" className="rounded-full p-2">
               <Link href="https://twitter.com" target="_blank" aria-label="Twitter">
                 <Twitter className="h-5 w-5" />
               </Link>

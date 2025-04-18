@@ -2,10 +2,10 @@
 
 import { useState } from "react"
 import { useForm } from "react-hook-form"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { useToast } from "@/components/simple-toaster"
+import { Button } from "@/components/simple-button"
+import { Input } from "@/components/simple-input"
+import { Label } from "@/components/simple-label"
+import { useToast } from "@/components/simple-toast"
 
 type FormData = {
   email: string

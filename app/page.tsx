@@ -6,7 +6,6 @@ import { ScheduleSection } from "@/components/schedule-section"
 import { MapSection } from "@/components/map-section"
 import { SimpleFaqSection } from "@/components/simple-faq-section"
 import { Footer } from "@/components/footer"
-import { SimpleToaster } from "@/components/simple-toaster"
 
 export default function Home() {
   return (
@@ -23,7 +22,6 @@ export default function Home() {
       <div className="section-divider" />
       <SimpleFaqSection />
       <Footer />
-      <SimpleToaster />
     </main>
   )
 }

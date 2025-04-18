@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/simple-button"
 import { festivalData } from "@/data/festival-data"
 import { useReducedMotion } from "@/components/use-reduced-motion"
 
@@ -62,7 +62,7 @@ export function HeroSection() {
         </motion.p>
 
         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="bg-festival-blue hover:bg-festival-blue/90 text-white" asChild>
+          <Button size="lg" className="bg-festival-blue hover:bg-festival-blue/90 text-white">
             <Link href={festivalData.eventbriteUrl} target="_blank">
               RSVP on Eventbrite
             </Link>
@@ -72,7 +72,6 @@ export function HeroSection() {
             size="lg"
             variant="outline"
             className="border-festival-pink text-festival-pink hover:bg-festival-pink hover:text-white"
-            asChild
           >
             <Link href={festivalData.vipUrl} target="_blank">
               Get VIP Access
