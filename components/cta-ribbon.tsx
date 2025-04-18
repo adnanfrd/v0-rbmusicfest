@@ -6,7 +6,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { festivalData } from "@/data/festival-data"
 import { Calendar, MapPin, Mail, Crown } from "lucide-react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { SimpleDialog } from "@/components/simple-dialog"
 import { EmailSignupForm } from "@/components/email-signup-form"
 import { useReducedMotion } from "@/components/use-reduced-motion"
 
@@ -43,6 +43,13 @@ export function CtaRibbon() {
     },
   }
 
+  const emailButton = (
+    <Button size="sm" variant="outline" className="whitespace-nowrap">
+      <Mail className="mr-2 h-4 w-4" />
+      <span className="hidden sm:inline">Get Updates</span>
+    </Button>
+  )
+
   return (
     <motion.div
       className="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-sm shadow-md"
@@ -71,20 +78,9 @@ export function CtaRibbon() {
             </Link>
           </Button>
 
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button size="sm" variant="outline" className="whitespace-nowrap">
-                <Mail className="mr-2 h-4 w-4" />
-                <span className="hidden sm:inline">Get Updates</span>
-              </Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Stay Updated</DialogTitle>
-              </DialogHeader>
-              <EmailSignupForm />
-            </DialogContent>
-          </Dialog>
+          <SimpleDialog trigger={emailButton} title="Stay Updated">
+            <EmailSignupForm />
+          </SimpleDialog>
 
           <Button size="sm" variant="outline" className="whitespace-nowrap" asChild>
             <Link href={festivalData.mapUrl} target="_blank">

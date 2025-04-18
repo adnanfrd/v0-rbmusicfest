@@ -4,9 +4,9 @@ import { LineupSection } from "@/components/lineup-section"
 import { ExperienceSection } from "@/components/experience-section"
 import { ScheduleSection } from "@/components/schedule-section"
 import { MapSection } from "@/components/map-section"
-import { FaqSection } from "@/components/faq-section"
+import { SimpleFaqSection } from "@/components/simple-faq-section"
 import { Footer } from "@/components/footer"
-import { Toaster } from "@/components/ui/toaster"
+import { SimpleToaster } from "@/components/simple-toaster"
 
 export default function Home() {
   return (
@@ -21,9 +21,9 @@ export default function Home() {
       <div className="section-divider" />
       <MapSection />
       <div className="section-divider" />
-      <FaqSection />
+      <SimpleFaqSection />
       <Footer />
-      <Toaster />
+      <SimpleToaster />
     </main>
   )
 }

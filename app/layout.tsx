@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { DM_Sans, Rowdies } from "next/font/google"
 import "./globals.css"
+import { ToasterProvider } from "@/components/simple-toaster"
 
 // Initialize the fonts
 const dmSans = DM_Sans({
@@ -25,7 +26,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${rowdies.variable}`}>{children}</body>
+      <body className={`${dmSans.variable} ${rowdies.variable}`}>
+        <ToasterProvider>{children}</ToasterProvider>
+      </body>
     </html>
   )
 }
