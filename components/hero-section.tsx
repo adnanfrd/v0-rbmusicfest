@@ -77,6 +77,20 @@ export function HeroSection() {
             Get VIP Access
           </Link>
         </motion.div>
+
+        <motion.p variants={itemVariants} className="text-white text-lg mt-8 mb-4">
+          Can't go to the show but want to support music education?
+        </motion.p>
+
+        <motion.div variants={itemVariants}>
+          <Link
+            href={festivalData.donateUrl}
+            target="_blank"
+            className="inline-flex items-center justify-center h-11 px-8 py-2 font-medium rounded-md bg-yellow-500 text-black hover:bg-yellow-400"
+          >
+            Donate
+          </Link>
+        </motion.div>
       </motion.div>
     </section>
   )

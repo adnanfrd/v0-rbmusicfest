@@ -4,8 +4,9 @@ export const festivalData = {
   time: "Noon to 10 pm",
   location: "The Wayside, Rockaway Beach, OR",
   description: "FREE SHOW / ALL AGES",
-  eventbriteUrl: "https://www.eventbrite.com/e/rockaway-beach-music-festival-tickets",
-  vipUrl: "https://www.ncamfoundation.org/donate",
+  eventbriteUrl: "https://rbmusicfest.eventbrite.com",
+  vipUrl: "https://rbmusicfest.eventbrite.com",
+  donateUrl: "https://www.ncamfoundation.org/donate",
   mapUrl: "https://www.google.com/maps/dir/?api=1&destination=Wayside+Rockaway+Beach+OR",
 
   bands: [
