@@ -1,0 +1,18 @@
+/* Mobile-specific hero section styles */
+@media (max-width: 640px) {
+  .hero-title-image {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .hero-background {
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* Ensure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}

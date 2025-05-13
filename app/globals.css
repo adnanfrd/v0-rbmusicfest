@@ -4,6 +4,7 @@
 
 @import "./components/carousel.css";
 @import "./components/modal.css";
+@import "./components/mobile-fixes.css";
 
 :root {
   --festival-blue: #3b82f6;
@@ -14,6 +15,49 @@
 
 body {
   font-family: var(--font-montserrat);
+}
+
+/* Extremely aggressive mobile title image styling */
+.mobile-title-container {
+  width: 100%;
+  max-width: 800px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.mobile-title-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Mobile-specific overrides */
+@media screen and (max-width: 767px) {
+  .mobile-title-container {
+    max-width: 90%;
+    width: 90%;
+  }
+
+  .mobile-title-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 480px) {
+  .mobile-title-container {
+    max-width: 85%;
+    width: 85%;
+  }
+}
+
+/* Force image to be responsive on all browsers */
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 .festival-texture {

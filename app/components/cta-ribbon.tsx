@@ -20,23 +20,23 @@ export default function CtaRibbon() {
         transition: "opacity 0.5s ease, transform 0.5s ease",
       }}
     >
-      <div className="container py-3">
-        <div className="flex justify-between items-center gap-2 overflow-x-auto">
+      <div className="container py-2 sm:py-3">
+        <div className="flex justify-between items-center gap-1 sm:gap-2 overflow-x-auto px-1">
           <Link
             href="https://rbmusicfest.eventbrite.com"
             target="_blank"
-            className="inline-flex items-center justify-center h-9 px-3 py-2 text-sm font-medium rounded-md bg-blue-500 text-white hover:bg-blue-600 whitespace-nowrap"
+            className="inline-flex items-center justify-center h-8 sm:h-9 px-2 sm:px-3 py-1 sm:py-2 text-xs sm:text-sm font-medium rounded-md bg-blue-500 text-white hover:bg-blue-600 whitespace-nowrap"
           >
-            <Calendar className="mr-2 h-4 w-4" />
+            <Calendar className="mr-1 sm:mr-2 h-3 sm:h-4 w-3 sm:w-4" />
             <span className="hidden sm:inline">RSVP</span>
           </Link>
 
           <Link
             href="https://rbmusicfest.eventbrite.com"
             target="_blank"
-            className="inline-flex items-center justify-center h-9 px-3 py-2 text-sm font-medium rounded-md border border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white whitespace-nowrap"
+            className="inline-flex items-center justify-center h-8 sm:h-9 px-2 sm:px-3 py-1 sm:py-2 text-xs sm:text-sm font-medium rounded-md border border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white whitespace-nowrap"
           >
-            <Crown className="mr-2 h-4 w-4" />
+            <Crown className="mr-1 sm:mr-2 h-3 sm:h-4 w-3 sm:w-4" />
             <span className="hidden sm:inline">VIP Access</span>
           </Link>
 
@@ -44,18 +44,18 @@ export default function CtaRibbon() {
           <Link
             href="https://www.ncamfoundation.org/subscribe"
             target="_blank"
-            className="inline-flex items-center justify-center h-9 px-3 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-100 whitespace-nowrap"
+            className="inline-flex items-center justify-center h-8 sm:h-9 px-2 sm:px-3 py-1 sm:py-2 text-xs sm:text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-100 whitespace-nowrap"
           >
-            <Mail className="mr-2 h-4 w-4" />
+            <Mail className="mr-1 sm:mr-2 h-3 sm:h-4 w-3 sm:w-4" />
             <span className="hidden sm:inline">Get Updates</span>
           </Link>
 
           <Link
             href="https://www.google.com/maps/dir/?api=1&destination=Wayside+Rockaway+Beach+OR"
             target="_blank"
-            className="inline-flex items-center justify-center h-9 px-3 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-100 whitespace-nowrap"
+            className="inline-flex items-center justify-center h-8 sm:h-9 px-2 sm:px-3 py-1 sm:py-2 text-xs sm:text-sm font-medium rounded-md border border-gray-300 bg-white hover:bg-gray-100 whitespace-nowrap"
           >
-            <MapPin className="mr-2 h-4 w-4" />
+            <MapPin className="mr-1 sm:mr-2 h-3 sm:h-4 w-3 sm:w-4" />
             <span className="hidden sm:inline">Directions</span>
           </Link>
         </div>

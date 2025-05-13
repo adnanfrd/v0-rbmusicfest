@@ -8,10 +8,22 @@ export default function HeroSection() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [bgLoaded, setBgLoaded] = useState(false)
   const [titleLoaded, setTitleLoaded] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    // Check if we're on a mobile device
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    // Run on mount
+    checkMobile()
+
+    // Add resize listener
+    window.addEventListener("resize", checkMobile)
+
     // Log when the component mounts to verify it's loading
-    console.log("Hero section mounted")
+    console.log("Hero section mounted, isMobile:", isMobile)
 
     // Check if the background image is loaded
     const bgImg = new Image()
@@ -34,6 +46,10 @@ export default function HeroSection() {
     // Set overall loaded state when both images are loaded
     if (bgLoaded && titleLoaded) {
       setIsLoaded(true)
+    }
+
+    return () => {
+      window.removeEventListener("resize", checkMobile)
     }
   }, [bgLoaded, titleLoaded])
 
@@ -71,7 +87,7 @@ export default function HeroSection() {
           className={`mt-[100px] ${isLoaded ? "opacity-100 transform-none transition-all duration-1000 delay-50" : "opacity-0 transform translate-y-5"}`}
         >
           {/* Added text above the logo */}
-          <p className="text-white text-xl md:text-2xl font-medium mb-4 tracking-wider drop-shadow-lg">
+          <p className="text-white text-lg md:text-xl lg:text-2xl font-medium mb-4 tracking-wider drop-shadow-lg px-2">
             NCAM Foundation Presents the First Annual
           </p>
         </div>
@@ -79,32 +95,36 @@ export default function HeroSection() {
         <div
           className={`mb-8 ${isLoaded ? "opacity-100 transform-none transition-all duration-1000 delay-100" : "opacity-0 transform translate-y-5"}`}
         >
-          {/* Title image */}
-          <img
-            src="/rbmf-title.png"
-            alt="Rockaway Beach Music Festival"
-            className="mx-auto filter drop-shadow-lg max-w-full h-auto"
-            style={{ maxWidth: "800px" }}
-            onLoad={() => console.log("Title image rendered successfully")}
-            onError={(e) => console.error("Error rendering title image:", e)}
-          />
+          {/* Mobile-optimized title image approach */}
+          <div className="mobile-title-container mx-auto">
+            {/* We're using a direct img tag with explicit mobile styling */}
+            <img
+              src="/rbmf-title.png"
+              alt="Rockaway Beach Music Festival"
+              className="mx-auto filter drop-shadow-lg mobile-title-image"
+              onLoad={() => console.log("Title image rendered successfully")}
+              onError={(e) => console.error("Error rendering title image:", e)}
+            />
+          </div>
         </div>
 
-        {/* Increased spacer div to 400px */}
-        <div style={{ height: "400px" }}></div>
+        {/* Increased spacer div to 400px but make it responsive */}
+        <div className="h-[200px] md:h-[300px] lg:h-[400px]"></div>
 
         <div className="mt-8">
           {/* Updated to match the size of "FREE SHOW / ALL AGES" */}
           <p
             className={`text-white mb-4 max-w-2xl mx-auto font-bold drop-shadow-lg ${isLoaded ? "opacity-100 transform-none transition-all duration-1000 delay-200" : "opacity-0 transform translate-y-5"}`}
           >
-            <span className="text-2xl md:text-3xl tracking-wider">AUGUST 16-17, 2025</span>
+            <span className="text-xl md:text-2xl lg:text-3xl tracking-wider">AUGUST 16-17, 2025</span>
             <br />
-            <span className="text-xl md:text-2xl font-medium mt-2 block">The Wayside, Rockaway Beach, OR</span>
+            <span className="text-lg md:text-xl lg:text-2xl font-medium mt-2 block">
+              The Wayside, Rockaway Beach, OR
+            </span>
           </p>
 
           <p
-            className={`text-white text-2xl md:text-3xl mb-6 font-bold drop-shadow-lg ${isLoaded ? "opacity-100 transform-none transition-all duration-1000 delay-300" : "opacity-0 transform translate-y-5"}`}
+            className={`text-white text-xl md:text-2xl lg:text-3xl mb-6 font-bold drop-shadow-lg ${isLoaded ? "opacity-100 transform-none transition-all duration-1000 delay-300" : "opacity-0 transform translate-y-5"}`}
           >
             FREE SHOW / ALL AGES
           </p>
@@ -112,13 +132,13 @@ export default function HeroSection() {
           <div
             className={`mb-8 ${isLoaded ? "opacity-100 transform-none transition-all duration-1000 delay-400" : "opacity-0 transform translate-y-5"}`}
           >
-            <p className="text-white text-lg md:text-xl mb-4 uppercase tracking-wider drop-shadow-lg">
+            <p className="text-white text-base md:text-lg lg:text-xl mb-4 uppercase tracking-wider drop-shadow-lg px-2">
               LOCAL ARTISANS + GREAT FOOD + INTERACTIVE ART BOOTHS + LOCAL BEERS &amp; FULL BAR
             </p>
           </div>
 
           <div
-            className={`flex flex-col sm:flex-row gap-4 justify-center mb-8 ${isLoaded ? "opacity-100 transform-none transition-all duration-1000 delay-500" : "opacity-0 transform translate-y-5"}`}
+            className={`flex flex-col sm:flex-row gap-4 justify-center mb-8 px-4 ${isLoaded ? "opacity-100 transform-none transition-all duration-1000 delay-500" : "opacity-0 transform translate-y-5"}`}
           >
             <div className="relative group">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-200"></div>
@@ -144,7 +164,7 @@ export default function HeroSection() {
           </div>
 
           <p
-            className={`text-white text-lg mt-8 mb-4 ${isLoaded ? "opacity-100 transform-none transition-all duration-1000 delay-600" : "opacity-0 transform translate-y-5"}`}
+            className={`text-white text-base md:text-lg mt-8 mb-4 ${isLoaded ? "opacity-100 transform-none transition-all duration-1000 delay-600" : "opacity-0 transform translate-y-5"}`}
           >
             Can't go to the show but want to support music education?
           </p>
@@ -164,22 +184,22 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Added 50px more vertical padding between Donate and Spotify links */}
-          <div style={{ height: "50px" }}></div>
+          {/* Added 50px more vertical padding between Donate and Spotify links - make responsive */}
+          <div className="h-[30px] md:h-[40px] lg:h-[50px]"></div>
 
-          {/* Spotify playlist link */}
+          {/* Spotify playlist link - improved for mobile */}
           <div
-            className={`mt-8 ${isLoaded ? "opacity-100 transform-none transition-all duration-1000 delay-800" : "opacity-0 transform translate-y-5"}`}
+            className={`mt-8 px-4 ${isLoaded ? "opacity-100 transform-none transition-all duration-1000 delay-800" : "opacity-0 transform translate-y-5"}`}
           >
             <div className="inline-block relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-green-400 to-green-600 rounded-lg blur opacity-75"></div>
               <Link
                 href="https://open.spotify.com/playlist/4C7GtZVxKEjO9jyOAbdth5?si=326e2e7a07864a58&pt=57b1a8b02997ad8a1d2f6558fced685f"
                 target="_blank"
-                className="relative inline-flex items-center px-6 py-3 bg-black/80 backdrop-blur-sm rounded-lg text-white hover:bg-black/90 transition-colors duration-200"
+                className="relative inline-flex items-center px-4 sm:px-6 py-3 bg-black/80 backdrop-blur-sm rounded-lg text-white hover:bg-black/90 transition-colors duration-200"
               >
-                <Music className="mr-3 h-6 w-6 text-green-400" />
-                <span className="text-lg font-medium">Check out the RBMF 2025 Vibes Spotify Playlist</span>
+                <Music className="mr-2 sm:mr-3 h-5 w-5 text-green-400 flex-shrink-0" />
+                <span className="text-base sm:text-lg font-medium">Check out the RBMF 2025 Vibes Spotify Playlist</span>
               </Link>
             </div>
           </div>
