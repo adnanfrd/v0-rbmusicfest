@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import Link from "next/link"
 import { Info, ExternalLink, Calendar, Music } from "lucide-react"
 import { useEffect, useState } from "react"
@@ -11,6 +13,7 @@ export default function LineupSection() {
   const [sundayVisible, setSundayVisible] = useState(false)
   const [selectedArtist, setSelectedArtist] = useState<any>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({})
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,6 +36,45 @@ export default function LineupSection() {
   }, [])
 
   const artists = [
+    {
+      name: "Typhoon",
+      description:
+        "Typhoon is an American indie rock band that originated in Salem, Oregon, and is now based in Portland. Known for their orchestral arrangements and big-hearted indie rock anthems, Typhoon's sound often incorporates a traditional rock setup complemented by brass, strings, and auxiliary percussion.",
+      fullBio:
+        'Typhoon is an American indie rock band that originated in Salem, Oregon, and is now based in Portland. Formed in 2005 by high school friends Kyle Morton (singer-songwriter, piano, guitar), Toby Tanabe (bass, vocals), and Dave Hall (guitar, vocals), the band is known for its large and fluctuating membership, which has included up to fourteen musicians in the past.\n\nCharacterized by their orchestral arrangements and big-hearted indie rock anthems, Typhoon\'s sound often incorporates a traditional rock setup complemented by brass, strings, and auxiliary percussion. Lyrically, many of their songs delve into themes of mortality, partly influenced by frontman Kyle Morton\'s childhood struggle with Lyme disease.\n\nOver their career, Typhoon has released five studio albums, including their self-titled debut in 2005, "Hunger and Thirst" (2010), "White Lighter" (2013), "Offerings" (2018), and "Sympathetic Magic" (2021), as well as EPs like "A New Kind of House." Their most recent album, "Underground Complex No. 1," was released in 2022. The band has gained recognition for their dynamic live performances and has toured with notable acts such as The Decemberists, Belle and Sebastian, and The Shins. Key members, in addition to the founders, include drummer Alex Fitch and violinist/vocalist Shannon Steele.',
+      website: "https://wearetyphoon.com",
+      // Updated to use the new press photo
+      image: "/images/TyphoonPressPhoto2021.png",
+      tag: "members of",
+      videos: [
+        {
+          title: "Typhoon on NPR's Tiny Desk Series",
+          url: "https://youtu.be/nDdO60XcqPQ?feature=shared&t=46",
+        },
+      ],
+      socialLinks: [
+        {
+          name: "Website",
+          url: "https://wearetyphoon.com",
+        },
+        {
+          name: "Bandcamp",
+          url: "https://wearetyphoon.bandcamp.com",
+        },
+        {
+          name: "Instagram",
+          url: "http://www.instagram.com/typhoonfamilyvacation",
+        },
+        {
+          name: "Twitter/X",
+          url: "http://www.twitter.com/wearetyphoon",
+        },
+        {
+          name: "Facebook",
+          url: "http://www.facebook.com/wearetyphoon",
+        },
+      ],
+    },
     {
       name: "Glitterfox",
       description:
@@ -73,44 +115,6 @@ export default function LineupSection() {
         {
           name: "YouTube",
           url: "https://www.youtube.com/channel/UC8SP3PG6O2V7JOH2aGerx5g",
-        },
-      ],
-    },
-    {
-      name: "Typhoon",
-      description:
-        "Typhoon is an American indie rock band that originated in Salem, Oregon, and is now based in Portland. Known for their orchestral arrangements and big-hearted indie rock anthems, Typhoon's sound often incorporates a traditional rock setup complemented by brass, strings, and auxiliary percussion.",
-      fullBio:
-        'Typhoon is an American indie rock band that originated in Salem, Oregon, and is now based in Portland. Formed in 2005 by high school friends Kyle Morton (singer-songwriter, piano, guitar), Toby Tanabe (bass, vocals), and Dave Hall (guitar, vocals), the band is known for its large and fluctuating membership, which has included up to fourteen musicians in the past.\n\nCharacterized by their orchestral arrangements and big-hearted indie rock anthems, Typhoon\'s sound often incorporates a traditional rock setup complemented by brass, strings, and auxiliary percussion. Lyrically, many of their songs delve into themes of mortality, partly influenced by frontman Kyle Morton\'s childhood struggle with Lyme disease.\n\nOver their career, Typhoon has released five studio albums, including their self-titled debut in 2005, "Hunger and Thirst" (2010), "White Lighter" (2013), "Offerings" (2018), and "Sympathetic Magic" (2021), as well as EPs like "A New Kind of House." Their most recent album, "Underground Complex No. 1," was released in 2022. The band has gained recognition for their dynamic live performances and has toured with notable acts such as The Decemberists, Belle and Sebastian, and The Shins. Key members, in addition to the founders, include drummer Alex Fitch and violinist/vocalist Shannon Steele.',
-      website: "https://wearetyphoon.com",
-      image: "/images/typhoon-band.jpeg",
-      tag: "members of",
-      videos: [
-        {
-          title: "Typhoon on NPR's Tiny Desk Series",
-          url: "https://youtu.be/nDdO60XcqPQ?feature=shared&t=46",
-        },
-      ],
-      socialLinks: [
-        {
-          name: "Website",
-          url: "https://wearetyphoon.com",
-        },
-        {
-          name: "Bandcamp",
-          url: "https://wearetyphoon.bandcamp.com",
-        },
-        {
-          name: "Instagram",
-          url: "http://www.instagram.com/typhoonfamilyvacation",
-        },
-        {
-          name: "Twitter/X",
-          url: "http://www.twitter.com/wearetyphoon",
-        },
-        {
-          name: "Facebook",
-          url: "http://www.facebook.com/wearetyphoon",
         },
       ],
     },
@@ -230,6 +234,20 @@ export default function LineupSection() {
     setIsModalOpen(false)
   }
 
+  // Improved function to handle image errors
+  const handleImageError = (artistName: string, e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    console.error(`Failed to load image for ${artistName}:`, e.currentTarget.src)
+
+    // Update the error state
+    setImageErrors((prev) => ({
+      ...prev,
+      [artistName]: true,
+    }))
+
+    // Set fallback image
+    e.currentTarget.src = `https://placehold.co/400x200/gray/white?text=${encodeURIComponent(artistName)}`
+  }
+
   return (
     <section id="lineup" className="py-20 bg-gradient-to-b from-white to-gray-100">
       <div className="container px-4">
@@ -268,15 +286,19 @@ export default function LineupSection() {
             >
               <div className="rounded-lg border bg-white text-gray-900 shadow-md overflow-hidden h-full flex flex-col hover:shadow-xl transition-all duration-300 relative">
                 <div className="p-0 aspect-video relative bg-gray-100 flex items-center justify-center overflow-hidden">
-                  <img
-                    src={artist.image || "/placeholder.svg"}
-                    alt={artist.name}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      console.error("Error loading image:", e)
-                      e.currentTarget.src = `https://placehold.co/400x200/gray/white?text=${artist.name}`
-                    }}
-                  />
+                  {/* Use a fallback image if we've already had an error for this artist */}
+                  {imageErrors[artist.name] ? (
+                    <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-600">
+                      {artist.name}
+                    </div>
+                  ) : (
+                    <img
+                      src={artist.image || "/placeholder.svg"}
+                      alt={artist.name}
+                      className={`w-full h-full object-cover ${artist.name === "Typhoon" ? "object-center" : ""}`}
+                      onError={(e) => handleImageError(artist.name, e)}
+                    />
+                  )}
                   {artist.tag && (
                     <div className="absolute top-2 left-2 bg-festival-pink text-white text-xs px-2 py-1 rounded-full">
                       {artist.tag}
