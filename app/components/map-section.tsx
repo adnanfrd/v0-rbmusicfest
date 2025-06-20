@@ -30,7 +30,7 @@ export default function MapSection() {
   }, [])
 
   return (
-    <section id="directions" className="py-20 bg-gradient-to-b from-white to-gray-100">
+    <section id="directions" className="py-20 bg-gradient-to-b from-gray-100 to-white">
       <div className="container px-4">
         <div
           className="text-center mb-12"
@@ -48,7 +48,7 @@ export default function MapSection() {
         </div>
 
         <div
-          className="rounded-xl overflow-hidden shadow-md relative"
+          className="rounded-xl overflow-hidden shadow-lg relative border border-gray-200"
           style={{
             opacity: mapVisible ? 1 : 0,
             transition: "opacity 0.8s ease",
@@ -82,7 +82,7 @@ export default function MapSection() {
           <Link
             href="https://maps.app.goo.gl/KGv1hedczPd91QC8A"
             target="_blank"
-            className="inline-flex items-center justify-center px-6 py-3 font-bold rounded-lg bg-festival-blue text-white hover:bg-blue-700 transition-colors"
+            className="inline-flex items-center justify-center px-8 py-4 font-bold rounded-xl bg-festival-blue text-white hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
             <MapPin className="mr-2 h-5 w-5" />
             Open in Google Maps

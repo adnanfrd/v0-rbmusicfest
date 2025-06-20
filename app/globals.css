@@ -74,3 +74,44 @@ body {
 .bg-festival-yellow {
   background-color: var(--festival-yellow);
 }
+
+/* Enhanced focus states for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--festival-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Consistent button hover states */
+.btn-hover-scale {
+  transition: all 0.3s ease;
+}
+
+.btn-hover-scale:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Consistent text scaling for mobile */
+@media (max-width: 640px) {
+  h1,
+  h2,
+  h3 {
+    line-height: 1.2;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Consistent section spacing */
+section {
+  scroll-margin-top: 80px;
+}

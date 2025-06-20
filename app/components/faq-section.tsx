@@ -85,7 +85,7 @@ export default function FaqSection() {
   }
 
   return (
-    <section id="faq" className="py-20 bg-white">
+    <section id="faq" className="py-20 bg-gradient-to-b from-white to-gray-100">
       <div className="container px-4 max-w-3xl mx-auto">
         <div
           className="text-center mb-12"
@@ -95,12 +95,12 @@ export default function FaqSection() {
             transition: "opacity 0.8s ease, transform 0.8s ease",
           }}
         >
-          <h2 className="text-4xl md:text-5xl mb-2 text-festival-yellow font-bold">FREQUENTLY ASKED QUESTIONS</h2>
-          <div className="w-24 h-1 bg-festival-yellow mx-auto mb-6"></div>
+          <h2 className="text-4xl md:text-5xl mb-2 text-festival-pink font-bold">FREQUENTLY ASKED QUESTIONS</h2>
+          <div className="w-24 h-1 bg-festival-pink mx-auto mb-6"></div>
         </div>
 
         <div
-          className="bg-white rounded-xl shadow-sm p-6"
+          className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-8 border border-white/50"
           style={{
             opacity: faqsVisible ? 1 : 0,
             transition: "opacity 0.8s ease",
@@ -114,10 +114,10 @@ export default function FaqSection() {
                   onClick={() => toggleFaq(index)}
                   aria-expanded={activeIndex === index}
                 >
-                  <span className={activeIndex === index ? "text-festival-pink" : "text-gray-900"}>{faq.question}</span>
+                  <span className={activeIndex === index ? "text-festival-blue" : "text-gray-900"}>{faq.question}</span>
                   <ChevronDown
                     className={`h-5 w-5 transition-transform duration-300 ${
-                      activeIndex === index ? "rotate-180 text-festival-pink" : "text-gray-500"
+                      activeIndex === index ? "rotate-180 text-festival-blue" : "text-gray-500"
                     }`}
                   />
                 </button>

@@ -4,7 +4,6 @@ import { useEffect } from "react"
 import HeroSection from "./components/hero-section"
 import CtaRibbon from "./components/cta-ribbon"
 import LineupSection from "./components/lineup-section"
-import VendorApplicationSection from "@/components/vendor-application-section"
 import ExperienceSection from "./components/experience-section"
 import MapSection from "./components/map-section"
 import FaqSection from "./components/faq-section"
@@ -35,11 +34,14 @@ export default function Home() {
       })
     })
 
-    // Preload critical images
+    // Preload critical images using the correct blob URLs
     const preloadImages = [
-      "/squatch.png",
-      "/rbmf-title.png",
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/TyphoonPressPhoto2021-9G8ndu0cfbyIrKMtwKyq6dkiOBse4z.png",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/zip-blob/v0-RBMF-v0-SITE-main/public/squatch-DCY8BTAEooyduNm7u5koD5N6njziJA.png", // squatch.png
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/zip-blob/v0-RBMF-v0-SITE-main/public/rbmf-title-GWRcFb3YGP7Fiulma7arIRkXrZpcl0.png", // rbmf-title.png
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/zip-blob/v0-RBMF-v0-SITE-main/public/images/TyphoonPressPhoto2021-Z5RuyFSjooyEf5tKLrjwCafNpVCe43.png", // TyphoonPressPhoto2021.png
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/zip-blob/v0-RBMF-v0-SITE-main/public/images/glitterfox-band-rGTMT50p4Z9byp83kyjCRvuqZ8cjXU.jpeg", // glitterfox-band.jpeg
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/zip-blob/v0-RBMF-v0-SITE-main/public/images/mitch-whitaker-band-u2qj1InxzFKqrWeyjr57Mzz6gGSLnF.webp", // mitch-whitaker-band.webp
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/zip-blob/v0-RBMF-v0-SITE-main/public/images/mercury-coast-band-qbQ8pMcV5AHPHsvoNxl270xYXJbBW4.jpeg", // mercury-coast-band.jpeg
     ]
 
     preloadImages.forEach((src) => {
@@ -57,12 +59,11 @@ export default function Home() {
       <LineupSection />
       <div className="section-divider"></div>
       <ExperienceSection />
-      <VendorApplicationSection />
       <div className="section-divider"></div>
       <MapSection />
       <div className="section-divider"></div>
       <FaqSection />
       <Footer />
-  </main>
+    </main>
   )
 }
