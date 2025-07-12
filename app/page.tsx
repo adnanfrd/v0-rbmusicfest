@@ -1,11 +1,11 @@
 "use client"
 import { useEffect } from "react"
-import HeroSection from "../components/hero-section"
-import LineupSection from "../components/lineup-section"
-import ExperienceSection from "../components/experience-section"
-import MapSection from "../components/map-section"
-import FAQSection from "../components/faq-section"
-import Footer from "../components/footer"
+import HeroSection from "./components/hero-section"
+import LineupSection from "./components/lineup-section"
+import ExperienceSection from "./components/experience-section"
+import MapSection from "./components/map-section"
+import FAQSection from "./components/faq-section"
+import Footer from "./components/footer"
 
 export default function Home() {
   useEffect(() => {
