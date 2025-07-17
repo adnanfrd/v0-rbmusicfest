@@ -23,8 +23,8 @@ export default function HeroSection() {
         <Image
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/zip-blob/v0-RBMF-v0-SITE-main/public/squatch-DCY8BTAEooyduNm7u5koD5N6njziJA.png"
           alt="Festival Background"
-          className="w-full h-full object-cover"
-          width={300} // 👈 Added width
+          className="w-full h-full object-cover object-[center_90%] md:object-center"
+          width={300}
           height={200}
           onError={(e) => {
             console.error("Error loading background image:", e);
@@ -257,35 +257,6 @@ export default function HeroSection() {
                       <span className="block sm:inline">
                         Donate to Support Music Education
                       </span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column - Spotify */}
-            <div className="relative group h-full">
-              <div className="absolute -inset-1 bg-gradient-to-br from-green-400/30 to-emerald-500/30 rounded-2xl blur opacity-60 group-hover:opacity-80 transition duration-300"></div>
-              <div className="relative bg-black/60 backdrop-blur-lg rounded-2xl p-8 border border-green-400/30 h-full flex flex-col shadow-xl">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-400 to-emerald-500 rounded-t-2xl"></div>
-                <h3 className="text-white text-xl md:text-2xl font-bold mb-6 drop-shadow-lg">
-                  RBMF 2025 Vibes Spotify Playlist
-                </h3>
-                <p className="text-gray-100 text-base md:text-lg mb-8 leading-relaxed flex-grow">
-                  Want a preview of what our summer will sound like? Check out
-                  our playlist on Spotify or follow any of the artists wherever
-                  you stream music.
-                </p>
-                <div className="flex justify-center">
-                  <div className="relative inline-block group">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-green-400 to-emerald-500 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
-                    <Link
-                      href="https://open.spotify.com/playlist/4C7GtZVxKEjO9jyOAbdth5?si=326e2e7a07864a58&pt=57b1a8b02997ad8a1d2f6558fced685f"
-                      target="_blank"
-                      className="relative inline-flex items-center px-8 py-4 bg-green-600 text-white hover:bg-green-700 transition-all duration-300 transform hover:scale-105 rounded-xl font-bold text-lg whitespace-nowrap"
-                    >
-                      <Music className="mr-2 h-5 w-5 flex-shrink-0" />
-                      Listen on Spotify
                     </Link>
                   </div>
                 </div>
