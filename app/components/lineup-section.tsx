@@ -1,41 +1,42 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import Link from "next/link"
-import { Info, ExternalLink, Calendar, Music } from "lucide-react"
-import { useEffect, useState } from "react"
-import ArtistModal from "./artist-modal"
+import Link from "next/link";
+import { Info, ExternalLink, Calendar, Music } from "lucide-react";
+import { useEffect, useState } from "react";
+import ArtistModal from "./artist-modal";
+import Image from "next/image";
 
 export default function LineupSection() {
-  const [isVisible, setIsVisible] = useState(false)
-  const [saturdayVisible, setSaturdayVisible] = useState(false)
-  const [sundayVisible, setSundayVisible] = useState(false)
-  const [stayUpdatedVisible, setStayUpdatedVisible] = useState(false)
-  const [selectedArtist, setSelectedArtist] = useState<any>(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({})
+  const [isVisible, setIsVisible] = useState(false);
+  const [saturdayVisible, setSaturdayVisible] = useState(false);
+  const [sundayVisible, setSundayVisible] = useState(false);
+  const [stayUpdatedVisible, setStayUpdatedVisible] = useState(false);
+  const [selectedArtist, setSelectedArtist] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
-          setTimeout(() => setSaturdayVisible(true), 300)
-          setTimeout(() => setSundayVisible(true), 600)
-          setTimeout(() => setStayUpdatedVisible(true), 900)
+          setIsVisible(true);
+          setTimeout(() => setSaturdayVisible(true), 300);
+          setTimeout(() => setSundayVisible(true), 600);
+          setTimeout(() => setStayUpdatedVisible(true), 900);
         }
       },
-      { threshold: 0.1 },
-    )
+      { threshold: 0.1 }
+    );
 
-    const section = document.getElementById("lineup")
-    if (section) observer.observe(section)
+    const section = document.getElementById("lineup");
+    if (section) observer.observe(section);
 
     return () => {
-      if (section) observer.unobserve(section)
-    }
-  }, [])
+      if (section) observer.unobserve(section);
+    };
+  }, []);
 
   // Current Saturday artists (will be reordered and expanded)
   const saturdayArtists = [
@@ -288,7 +289,7 @@ export default function LineupSection() {
         },
       ],
     },
-  ]
+  ];
 
   // Sunday artists with custom inline SVG placeholders
   const sundayArtists = [
@@ -297,7 +298,8 @@ export default function LineupSection() {
       description: "Artist information coming soon...",
       fullBio: "Full biography will be added soon.",
       website: "#",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Stay%20Tuned-EkK6KB4P8QPXEsMT5mfUIINBZFW1ee.png",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Stay%20Tuned-EkK6KB4P8QPXEsMT5mfUIINBZFW1ee.png",
       setTime: "11:00 AM",
       socialLinks: [],
       videos: [],
@@ -307,7 +309,8 @@ export default function LineupSection() {
       description: "Artist information coming soon...",
       fullBio: "Full biography will be added soon.",
       website: "#",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Doral%20Vance-gQsNwycFz9a0xHBlDt2vsAZkyYQPGB.png",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Doral%20Vance-gQsNwycFz9a0xHBlDt2vsAZkyYQPGB.png",
       setTime: "12:15 PM",
       socialLinks: [],
       videos: [],
@@ -328,7 +331,8 @@ export default function LineupSection() {
       description: "Artist information coming soon...",
       fullBio: "Full biography will be added soon.",
       website: "#",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sunkicks.png-EzNtGSWe3oRmGUtPxWBMSLaIeXxb03.jpeg",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sunkicks.png-EzNtGSWe3oRmGUtPxWBMSLaIeXxb03.jpeg",
       setTime: "2:45 PM",
       socialLinks: [],
       videos: [],
@@ -372,40 +376,53 @@ export default function LineupSection() {
       socialLinks: [],
       videos: [],
     },
-  ]
+  ];
 
   const openModal = (artist: any) => {
-    setSelectedArtist(artist)
-    setIsModalOpen(true)
-  }
+    setSelectedArtist(artist);
+    setIsModalOpen(true);
+  };
 
   const closeModal = () => {
-    setIsModalOpen(false)
-  }
+    setIsModalOpen(false);
+  };
 
   // Improved function to handle image errors
-  const handleImageError = (artistName: string, e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    console.error(`Failed toload image for ${artistName}:`, e.currentTarget.src)
+  const handleImageError = (
+    artistName: string,
+    e: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
+    console.error(
+      `Failed toload image for ${artistName}:`,
+      e.currentTarget.src
+    );
 
     // Update the error state
     setImageErrors((prev) => ({
       ...prev,
       [artistName]: true,
-    }))
+    }));
 
     // Set fallback image
-    e.currentTarget.src = `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(artistName)}`
-  }
+    e.currentTarget.src = `/placeholder.svg?height=200&width=400&text=${encodeURIComponent(
+      artistName
+    )}`;
+  };
 
   const renderArtistGrid = (artists: any[], visible: boolean) => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ opacity: visible ? 1 : 0 }}>
+    <div
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      style={{ opacity: visible ? 1 : 0 }}
+    >
       {artists.map((artist, index) => (
         <div
           key={index}
           style={{
             opacity: visible ? 1 : 0,
             transform: `translateY(${visible ? "0" : "20px"})`,
-            transition: `opacity 0.8s ease ${index * 0.1}s, transform 0.8s ease ${index * 0.1}s`,
+            transition: `opacity 0.8s ease ${
+              index * 0.1
+            }s, transform 0.8s ease ${index * 0.1}s`,
           }}
         >
           <div className="rounded-lg border bg-white text-gray-900 shadow-md overflow-hidden h-full flex flex-col hover:shadow-xl hover:scale-105 transition-all duration-300 relative">
@@ -415,10 +432,14 @@ export default function LineupSection() {
                   {artist.name}
                 </div>
               ) : (
-                <img
+                <Image
                   src={artist.image || "/placeholder.svg"}
                   alt={artist.name}
-                  className={`w-full h-full object-cover ${artist.name === "Typhoon" ? "object-center" : ""}`}
+                  width={300} // 👈 Added width
+                  height={200}
+                  className={`w-full h-full object-cover ${
+                    artist.name === "Typhoon" ? "object-center" : ""
+                  }`}
                   onError={(e) => handleImageError(artist.name, e)}
                 />
               )}
@@ -464,10 +485,13 @@ export default function LineupSection() {
         </div>
       ))}
     </div>
-  )
+  );
 
   return (
-    <section id="lineup" className="py-20 bg-gradient-to-b from-white to-gray-100">
+    <section
+      id="lineup"
+      className="py-20 bg-gradient-to-b from-white to-gray-100"
+    >
       <div className="container px-4">
         {/* Main Header */}
         <div
@@ -478,7 +502,9 @@ export default function LineupSection() {
             transition: "opacity 0.8s ease, transform 0.8s ease",
           }}
         >
-          <h2 className="text-4xl md:text-5xl mb-2 text-festival-blue font-bold">LIVE MUSIC LINEUP</h2>
+          <h2 className="text-4xl md:text-5xl mb-2 text-festival-blue font-bold">
+            LIVE MUSIC LINEUP
+          </h2>
           <div className="w-24 h-1 bg-festival-blue mx-auto mb-6"></div>
         </div>
 
@@ -494,7 +520,9 @@ export default function LineupSection() {
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center px-6 py-2 bg-festival-blue text-white rounded-full mb-4">
               <Calendar className="mr-2 h-5 w-5" />
-              <h3 className="text-xl md:text-2xl font-bold">Saturday, August 16th</h3>
+              <h3 className="text-xl md:text-2xl font-bold">
+                Saturday, August 16th
+              </h3>
             </div>
           </div>
           {renderArtistGrid(saturdayArtists, saturdayVisible)}
@@ -506,7 +534,9 @@ export default function LineupSection() {
             <div className="w-full border-t border-gray-300"></div>
           </div>
           <div className="relative flex justify-center">
-            <span className="bg-gray-100 px-4 text-sm text-gray-500">DAY 2</span>
+            <span className="bg-gray-100 px-4 text-sm text-gray-500">
+              DAY 2
+            </span>
           </div>
         </div>
 
@@ -522,7 +552,9 @@ export default function LineupSection() {
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center px-6 py-2 bg-festival-pink text-white rounded-full mb-4">
               <Calendar className="mr-2 h-5 w-5" />
-              <h3 className="text-xl md:text-2xl font-bold">Sunday, August 17th</h3>
+              <h3 className="text-xl md:text-2xl font-bold">
+                Sunday, August 17th
+              </h3>
             </div>
           </div>
           {renderArtistGrid(sundayArtists, sundayVisible)}
@@ -546,10 +578,13 @@ export default function LineupSection() {
 
           <div className="p-8">
             <div className="text-center max-w-2xl mx-auto">
-              <h4 className="text-xl font-bold mb-4 text-gray-800">Get the Latest Festival News</h4>
+              <h4 className="text-xl font-bold mb-4 text-gray-800">
+                Get the Latest Festival News
+              </h4>
               <p className="text-lg text-gray-700 mb-6">
-                Sign up for our mailing list to receive the latest news about performers, schedules, and special events
-                for the Rockaway Beach Music Festival.
+                Sign up for our mailing list to receive the latest news about
+                performers, schedules, and special events for the Rockaway Beach
+                Music Festival.
               </p>
               <div className="flex justify-center">
                 <Link
@@ -565,7 +600,11 @@ export default function LineupSection() {
         </div>
       </div>
 
-      <ArtistModal artist={selectedArtist} isOpen={isModalOpen} onClose={closeModal} />
+      <ArtistModal
+        artist={selectedArtist}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
     </section>
-  )
+  );
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import Image from "next/image"
 
 interface ImageCarouselProps {
   images: string[]
@@ -34,7 +35,7 @@ export default function ImageCarousel({ images, alt }: ImageCarouselProps) {
   return (
     <div className="relative w-full h-full">
       <div className="relative h-full w-full">
-        <img
+        <Image
           src={images[currentIndex] || "/placeholder.svg"}
           alt={`${alt} - Image ${currentIndex + 1}`}
           className="w-full h-full object-cover rounded-lg"
