@@ -32,14 +32,18 @@ export default function VideoEmbed({ videos }: VideoEmbedProps) {
   }
 
   // Extract YouTube video ID from URL
-  const getYouTubeId = (url: string) => {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/
-    const match = url.match(regExp)
-    return match && match[2].length === 11 ? match[2] : null
-  }
+ const getYouTubeId = (url: any): string | null => {
+
+  const regExp =
+    /^.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]{11}).*/
+  const match = String(url).match(regExp)
+  return match ? match[1] : null
+}
+
 
   const currentVideo = videos[currentIndex]
-  const videoId = getYouTubeId(currentVideo.url)
+  const videoId = getYouTubeId(currentVideo?.url)
+  console.log("iddd", videoId)
   const embedUrl = videoId ? `https://www.youtube.com/embed/${videoId}` : null
 
   return (

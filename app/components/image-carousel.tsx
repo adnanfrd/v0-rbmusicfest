@@ -38,6 +38,8 @@ export default function ImageCarousel({ images, alt }: ImageCarouselProps) {
         <Image
           src={images[currentIndex] || "/placeholder.svg"}
           alt={`${alt} - Image ${currentIndex + 1}`}
+          width={300}
+          height={200}
           className="w-full h-full object-cover rounded-lg"
           onError={(e) => {
             console.error("Error loading image:", images[currentIndex])
