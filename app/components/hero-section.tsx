@@ -1,31 +1,35 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Music, DollarSign } from "lucide-react"
-import { useEffect, useState } from "react"
+import Link from "next/link";
+import { Music, DollarSign } from "lucide-react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function HeroSection() {
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     // Set isLoaded to true after a timeout as a fallback
     const timer = setTimeout(() => {
-      setIsLoaded(true)
-    }, 1000)
-    return () => clearTimeout(timer)
-  }, [])
+      setIsLoaded(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
       {/* Background image container - Using the actual blob URL */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <img
+        <Image
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/zip-blob/v0-RBMF-v0-SITE-main/public/squatch-DCY8BTAEooyduNm7u5koD5N6njziJA.png"
           alt="Festival Background"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-[center_90%] md:object-center"
+          width={300}
+          height={200}
           onError={(e) => {
-            console.error("Error loading background image:", e)
-            e.currentTarget.src = "/placeholder.svg?height=1080&width=1920&text=Festival+Background"
+            console.error("Error loading background image:", e);
+            e.currentTarget.src =
+              "/placeholder.svg?height=1080&width=1920&text=Festival+Background";
           }}
         />
       </div>
@@ -37,7 +41,11 @@ export default function HeroSection() {
       ></div>
 
       <div
-        className={`container relative z-20 text-center px-4 pt-10 md:pt-0 ${isLoaded ? "opacity-100 transition-opacity duration-1000" : "opacity-0"}`}
+        className={`container relative z-20 text-center px-4 pt-10 md:pt-0 ${
+          isLoaded
+            ? "opacity-100 transition-opacity duration-1000"
+            : "opacity-0"
+        }`}
       >
         {/* Sponsor Logos Section */}
         <div
@@ -72,12 +80,16 @@ export default function HeroSection() {
                 rel="noopener noreferrer"
                 className="transition-transform duration-200 hover:scale-105"
               >
-                <img
+                <Image
                   src={src || "/placeholder.svg"}
                   alt={alt}
                   className="h-16 md:h-20 lg:h-24 w-auto filter drop-shadow-lg"
+                  width={300} // 👈 Added width
+                  height={200}
                   onError={(e) => {
-                    e.currentTarget.src = `/placeholder.svg?height=96&width=300&text=${encodeURIComponent(alt)}`
+                    e.currentTarget.src = `/placeholder.svg?height=96&width=300&text=${encodeURIComponent(
+                      alt
+                    )}`;
                   }}
                 />
               </Link>
@@ -87,14 +99,20 @@ export default function HeroSection() {
 
         {/* Main Title Section */}
         <div
-          className={`mb-8 ${isLoaded ? "opacity-100 transform-none transition-all duration-1000 delay-100" : "opacity-0 transform translate-y-5"}`}
+          className={`mb-8 ${
+            isLoaded
+              ? "opacity-100 transform-none transition-all duration-1000 delay-100"
+              : "opacity-0 transform translate-y-5"
+          }`}
         >
           {/* Original title image */}
           <div className="title-image-container w-full px-2">
-            <img
+            <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/zip-blob/v0-RBMF-v0-SITE-main/public/rbmf-title-GWRcFb3YGP7Fiulma7arIRkXrZpcl0.png"
               alt="Rockaway Beach Music Festival"
               className="mx-auto filter drop-shadow-lg w-full"
+              width={300} // 👈 Added width
+              height={200}
               style={{
                 maxWidth: "100%",
                 width: "100%",
@@ -102,8 +120,9 @@ export default function HeroSection() {
                 objectFit: "contain",
               }}
               onError={(e) => {
-                console.error("Error rendering title image:", e)
-                e.currentTarget.src = "/placeholder.svg?height=200&width=800&text=Rockaway+Beach+Music+Festival"
+                console.error("Error rendering title image:", e);
+                e.currentTarget.src =
+                  "/placeholder.svg?height=200&width=800&text=Rockaway+Beach+Music+Festival";
               }}
             />
           </div>
@@ -136,7 +155,11 @@ export default function HeroSection() {
         <div className="mt-8">
           {/* Single Clean Container - Date, Venue, Free Show, Primary CTAs */}
           <div
-            className={`mb-16 max-w-2xl mx-auto ${isLoaded ? "opacity-100 transform-none transition-all duration-1000 delay-200" : "opacity-0 transform translate-y-5"}`}
+            className={`mb-16 max-w-2xl mx-auto ${
+              isLoaded
+                ? "opacity-100 transform-none transition-all duration-1000 delay-200"
+                : "opacity-0 transform translate-y-5"
+            }`}
           >
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-br from-white/10 to-white/5 rounded-3xl blur-xl"></div>
@@ -162,8 +185,12 @@ export default function HeroSection() {
 
                 {/* Free Show / All Ages - Clean Typography */}
                 <div className="mb-10">
-                  <p className="text-2xl md:text-3xl lg:text-4xl font-bold drop-shadow-lg" style={{ color: "#ff00ff" }}>
-                    FREE SHOW <span className="text-yellow-300 mx-3">•</span> ALL AGES
+                  <p
+                    className="text-2xl md:text-3xl lg:text-4xl font-bold drop-shadow-lg"
+                    style={{ color: "#ff00ff" }}
+                  >
+                    FREE SHOW <span className="text-yellow-300 mx-3">•</span>{" "}
+                    ALL AGES
                   </p>
                 </div>
 
@@ -199,7 +226,11 @@ export default function HeroSection() {
 
           {/* Two-Column Section - Donate & Spotify - Pushed down */}
           <div
-            className={`grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto px-4 mb-12 ${isLoaded ? "opacity-100 transform-none transition-all duration-1000 delay-600" : "opacity-0 transform translate-y-5"}`}
+            className={`grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto px-4 mb-12 ${
+              isLoaded
+                ? "opacity-100 transform-none transition-all duration-1000 delay-600"
+                : "opacity-0 transform translate-y-5"
+            }`}
           >
             {/* Left Column - Donate */}
             <div className="relative group h-full">
@@ -210,47 +241,22 @@ export default function HeroSection() {
                   Can't Go But Want to Support Music Education?
                 </h3>
                 <p className="text-gray-100 text-base md:text-lg mb-8 leading-relaxed flex-grow">
-                  This free event is also a fundraiser for our high school music program. Please consider helping,
-                  funding for music education is hard to find!
+                  This free event is also a fundraiser for our high school music
+                  program. Please consider helping, funding for music education
+                  is hard to find!
                 </p>
-                <div className="flex justify-center">
-                  <div className="relative inline-block group">
+                <div className="flex justify-center px-4">
+                  <div className="relative inline-block group w-full sm:w-auto">
                     <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
                     <Link
                       href="https://www.ncamfoundation.org/donate"
                       target="_blank"
-                      className="relative inline-flex items-center justify-center px-8 py-4 font-bold text-lg rounded-xl bg-yellow-500 text-black hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 whitespace-nowrap"
+                      className="relative inline-flex items-center justify-center w-full sm:w-auto px-4 sm:px-8 py-3 sm:py-4 font-bold text-base sm:text-lg rounded-xl bg-yellow-500 text-black hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 text-center break-words"
                     >
                       <DollarSign className="mr-2 h-5 w-5 flex-shrink-0" />
-                      Donate to Support Music Education
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column - Spotify */}
-            <div className="relative group h-full">
-              <div className="absolute -inset-1 bg-gradient-to-br from-green-400/30 to-emerald-500/30 rounded-2xl blur opacity-60 group-hover:opacity-80 transition duration-300"></div>
-              <div className="relative bg-black/60 backdrop-blur-lg rounded-2xl p-8 border border-green-400/30 h-full flex flex-col shadow-xl">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-400 to-emerald-500 rounded-t-2xl"></div>
-                <h3 className="text-white text-xl md:text-2xl font-bold mb-6 drop-shadow-lg">
-                  RBMF 2025 Vibes Spotify Playlist
-                </h3>
-                <p className="text-gray-100 text-base md:text-lg mb-8 leading-relaxed flex-grow">
-                  Want a preview of what our summer will sound like? Check out our playlist on Spotify or follow any of
-                  the artists wherever you stream music.
-                </p>
-                <div className="flex justify-center">
-                  <div className="relative inline-block group">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-green-400 to-emerald-500 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
-                    <Link
-                      href="https://open.spotify.com/playlist/4C7GtZVxKEjO9jyOAbdth5?si=326e2e7a07864a58&pt=57b1a8b02997ad8a1d2f6558fced685f"
-                      target="_blank"
-                      className="relative inline-flex items-center px-8 py-4 bg-green-600 text-white hover:bg-green-700 transition-all duration-300 transform hover:scale-105 rounded-xl font-bold text-lg whitespace-nowrap"
-                    >
-                      <Music className="mr-2 h-5 w-5 flex-shrink-0" />
-                      Listen on Spotify
+                      <span className="block sm:inline">
+                        Donate to Support Music Education
+                      </span>
                     </Link>
                   </div>
                 </div>
@@ -260,5 +266,5 @@ export default function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
