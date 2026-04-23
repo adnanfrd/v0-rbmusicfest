@@ -9,6 +9,8 @@ export default function HeroSection() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+
+    
     // Set isLoaded to true after a timeout as a fallback
     const timer = setTimeout(() => {
       setIsLoaded(true);
